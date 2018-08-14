@@ -1,48 +1,44 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "addressPrefix": {
-            "type": "string"
-        },
-        "subnetName": {
-            "type": "string"
-        },
-        "subnetAddressPrefix": {
-            "type": "string"
-        },
-        "enableDdosProtection": {
-            "type": "bool"
+        "virtualNetworks_virtual_network_2_name": {
+            "defaultValue": "virtual_network_2",
+            "type": "String"
         }
     },
+    "variables": {},
     "resources": [
         {
-            "apiVersion": "2018-04-01",
-            "name": "[parameters('name')]",
+            "comments": "Generalized from resource: '/subscriptions/da05e384-093a-4005-a761-1bdd892fd7c1/resourceGroups/andrebuttigieg-sandbox/providers/Microsoft.Network/virtualNetworks/virtual_network_2'.",
             "type": "Microsoft.Network/virtualNetworks",
-            "location": "[parameters('location')]",
+            "name": "[parameters('virtualNetworks_virtual_network_2_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "westeurope",
+            "scale": null,
             "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "1e037e8b-13bd-431c-9b5d-916d2a2d104f",
                 "addressSpace": {
                     "addressPrefixes": [
-                        "[parameters('addressPrefix')]"
+                        "10.1.0.0/26"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('subnetName')]",
+                        "name": "virtual_network_subnet",
+                        "etag": "W/\"69d260e2-3d3d-4abc-ad82-ddc9b4f6fb35\"",
                         "properties": {
-                            "addressPrefix": "[parameters('subnetAddressPrefix')]"
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.1.0.0/26"
                         }
                     }
                 ],
-                "enableDdosProtection": "[parameters('enableDdosProtection')]"
-            }
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": []
         }
     ]
 }
